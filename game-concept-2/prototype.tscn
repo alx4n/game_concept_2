@@ -1,14 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbwcrxo0i0sok"]
+[gd_scene load_steps=10 format=3 uid="uid://dbwcrxo0i0sok"]
 
 [ext_resource type="Script" uid="uid://c7jh07sdjb8yl" path="res://player_character.gd" id="1_gxbh7"]
+[ext_resource type="Texture2D" uid="uid://cjtcuogy057g" path="res://assets/snow_field_2_4k.hdr" id="2_vo8sw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vo8sw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_883nb"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_gxbh7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gxbh7"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_883nb"]
+panorama = ExtResource("2_vo8sw")
+
+[sub_resource type="Sky" id="Sky_7fmhn"]
+sky_material = SubResource("PanoramaSkyMaterial_883nb")
+
+[sub_resource type="Environment" id="Environment_mbk3n"]
+background_mode = 2
+sky = SubResource("Sky_7fmhn")
+
 [node name="Prototype" type="Node3D"]
 
 [node name="PlayerCharacter" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0667, 0)
 script = ExtResource("1_gxbh7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter"]
@@ -18,3 +34,20 @@ shape = SubResource("BoxShape3D_vo8sw")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacter"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_883nb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.5299, -1047.49)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="floor" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(71.1774, 0, 0, 0, -4.76766e-06, 1, 0, -109.071, -4.37114e-08, 0, -0.566712, 0)
+mesh = SubResource("QuadMesh_gxbh7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(71.1774, 0, 0, 0, -4.76766e-06, 1, 0, -109.071, -4.37114e-08, 0, -0.566712, 0)
+shape = SubResource("BoxShape3D_gxbh7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mbk3n")
