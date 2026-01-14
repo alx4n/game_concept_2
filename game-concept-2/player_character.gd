@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 var mouse_sensitivity = 0.01 
 
+@onready var ray_cast = $Camera3D/RayCast3D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -38,3 +39,9 @@ func _unhandled_input(event):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			
+func _process(delta: float) -> void:
+	var selected
+	if ray_cast.is_colliding():
+		selected = ray_cast.get_collider()
+		selected.queue_free()
