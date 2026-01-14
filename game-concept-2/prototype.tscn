@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbwcrxo0i0sok"]
+[gd_scene load_steps=15 format=3 uid="uid://dbwcrxo0i0sok"]
 
 [ext_resource type="Script" uid="uid://nvrm2gy6sgp7" path="res://scripts/prototype.gd" id="1_883nb"]
 [ext_resource type="Script" uid="uid://c7jh07sdjb8yl" path="res://scripts/player_character.gd" id="1_gxbh7"]
 [ext_resource type="Texture2D" uid="uid://cjtcuogy057g" path="res://assets/snow_field_2_4k.hdr" id="2_vo8sw"]
+[ext_resource type="Script" uid="uid://b53beiyd7mir" path="res://canvas_layer.gd" id="4_7fmhn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vo8sw"]
 
@@ -93,6 +94,7 @@ environment = SubResource("Environment_mbk3n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
+script = ExtResource("4_7fmhn")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -114,3 +116,6 @@ text = "Speed x 2"
 [node name="Button2" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 text = "Jump x 2"
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button2" to="." method="_on_button_pressed"]

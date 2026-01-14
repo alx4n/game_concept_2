@@ -1,7 +1,5 @@
-extends Node3D
+extends CanvasLayer
 
-@onready var enemies : Node = get_tree().root.get_node("/root/Prototype/Enemies")
-@onready var selected = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,12 +8,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if !selected && enemies.get_child(0) == null && enemies.get_child(1) == null:
-		$CanvasLayer.visible = true
 	pass
 
 
 func _on_button_pressed() -> void:
-	$CanvasLayer.visible = false
-	selected = true
+	self.visible = false
+	print("pressed")
 	pass # Replace with function body.
