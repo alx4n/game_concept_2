@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 10.0
-const JUMP_VELOCITY = 4.5
+var SPEED = Singleton.speed
+var JUMP_VELOCITY = Singleton.jump_velocity
 var mouse_sensitivity = 0.01 
 
 @onready var ray_cast = $Camera3D/RayCast3D
