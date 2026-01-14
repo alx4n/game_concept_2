@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbwcrxo0i0sok"]
+[gd_scene load_steps=13 format=3 uid="uid://ce54efnvyo4ot"]
 
 [ext_resource type="Script" uid="uid://c7jh07sdjb8yl" path="res://player_character.gd" id="1_gxbh7"]
 [ext_resource type="Texture2D" uid="uid://cjtcuogy057g" path="res://assets/snow_field_2_4k.hdr" id="2_vo8sw"]
