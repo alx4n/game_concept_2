@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c012muh21t0yk"]
+[gd_scene load_steps=0 format=3 uid="uid://c012muh21t0yk"]
 
 [node name="UpgradeScreen" type="Control"]
 layout_mode = 3
