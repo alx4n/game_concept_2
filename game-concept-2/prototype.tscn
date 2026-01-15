@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dbwcrxo0i0sok"]
+[gd_scene load_steps=22 format=3 uid="uid://ce54efnvyo4ot"]
 
 [ext_resource type="Script" uid="uid://nvrm2gy6sgp7" path="res://scripts/prototype.gd" id="1_883nb"]
 [ext_resource type="Script" uid="uid://c7jh07sdjb8yl" path="res://scripts/player_character.gd" id="1_gxbh7"]
 [ext_resource type="Texture2D" uid="uid://cjtcuogy057g" path="res://assets/snow_field_2_4k.hdr" id="2_vo8sw"]
-[ext_resource type="Script" uid="uid://b53beiyd7mir" path="res://canvas_layer.gd" id="4_7fmhn"]
+[ext_resource type="PackedScene" uid="uid://dahith8wkoply" path="res://assets/AstronautEnemy.glb" id="3_mbk3n"]
+[ext_resource type="Script" path="res://canvas_layer.gd" id="4_7fmhn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vo8sw"]
 
@@ -12,7 +13,7 @@
 [sub_resource type="QuadMesh" id="QuadMesh_gxbh7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vo8sw"]
-albedo_color = Color(0.0470588, 0.282353, 1, 1)
+albedo_color = Color(0.183808, 0.025236, 0.00248445, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gxbh7"]
 
@@ -25,8 +26,6 @@ sky_material = SubResource("PanoramaSkyMaterial_883nb")
 [sub_resource type="Environment" id="Environment_mbk3n"]
 background_mode = 2
 sky = SubResource("Sky_7fmhn")
-
-[sub_resource type="BoxMesh" id="BoxMesh_7fmhn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_883nb"]
 
@@ -112,7 +111,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9804, 3.29591, -35.5139)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/Enemy2"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_7fmhn")
+
+[node name="Root Scene" parent="Enemies/Enemy2/MeshInstance3D" instance=ExtResource("3_mbk3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.74876, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy2"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -123,7 +124,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1727, 3.29591, -35.5139)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/Enemy"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_7fmhn")
+
+[node name="Root Scene" parent="Enemies/Enemy/MeshInstance3D" instance=ExtResource("3_mbk3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.695596, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
